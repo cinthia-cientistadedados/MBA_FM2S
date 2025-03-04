@@ -62,18 +62,20 @@ SET
     -- listed_in = NULLIF(@listed_in, 'NA'),
     -- description = NULLIF(@description, 'NA');
 
-SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
-FROM titles t
-INNER JOIN engagement e ON t.title = e.Title;
+SELECT * FROM netflix limited 10;
 
 SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
-FROM titles t
-RIGHT JOIN engagement e ON t.title = e.Title;
+FROM netflix.titles t
+INNER JOIN netflix.engagement e ON t.title = e.Title;
 
 SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
-FROM titles t
-LEFT JOIN engagement e ON t.title = e.Title
+FROM netflix.titles t
+RIGHT JOIN netflix.engagement e ON t.title = e.Title;
+
+SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
+FROM netflix.titles t
+LEFT JOIN netflix.engagement e ON t.title = e.Title
 UNION
 SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
-FROM titles t
-RIGHT JOIN engagement e ON t.title = e.Title;
+FROM netflix.titles t
+RIGHT JOIN netflix.engagement e ON t.title = e.Title;
