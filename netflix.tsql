@@ -62,7 +62,7 @@ SET
     -- listed_in = NULLIF(@listed_in, 'NA'),
     -- description = NULLIF(@description, 'NA');
 
-SELECT * FROM netflix limited 10;
+SELECT * FROM netflix limit 10;
 
 SELECT t.show_id, t.title, t.type, t.director, t.cast, t.country, t.date_added, t.release_year, t.rating, t.duration, t.listed_in, t.description, e.Hours_Viewed
 FROM netflix.titles t
