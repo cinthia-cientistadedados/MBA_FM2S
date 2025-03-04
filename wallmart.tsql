@@ -1,0 +1,67 @@
+-- criação do database
+CREATE DATABASE wallmart;
+
+-- seleção do database
+USE wallmart;
+
+-- criação de tabela 
+CREATE TABLE sales_data (
+    id INT PRIMARY KEY,
+    Store INT,
+    Dept INT,
+    Date DATE,
+    Weekly_Sales FLOAT,
+    IsHoliday varchar(5),
+    Temperature FLOAT,
+    Fuel_Price FLOAT,
+    MarkDown1 FLOAT,
+    MarkDown2 FLOAT,
+    MarkDown3 FLOAT,
+    MarkDown4 FLOAT,
+    MarkDown5 FLOAT,
+    CPI FLOAT,
+    Unemployment FLOAT,
+    Type CHAR(1),
+    Size INT,
+    Super_Bowl BOOLEAN,
+    Labor_Day BOOLEAN,
+    Thanksgiving BOOLEAN,
+    Christmas BOOLEAN,
+    week INT,
+    month INT,
+    year INT
+);
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/clean_data.csv'
+INTO TABLE sales_data
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(id, Store, Dept, Date, Weekly_Sales, IsHoliday, Temperature, Fuel_Price, MarkDown1, MarkDown2, MarkDown3, MarkDown4, MarkDown5, CPI, Unemployment, Type, Size, Super_Bowl, Labor_Day, Thanksgiving, Christmas, week, month, year);
+
+SELECT Store, SUM(Weekly_Sales) AS Total_Sales
+FROM sales_data
+GROUP BY Store;
+
+SELECT week, SUM(Weekly_Sales) AS Total_Sales
+FROM sales_data
+GROUP BY week;
+
+SELECT week, SUM(Weekly_Sales) AS Total_Sales
+FROM sales_data
+GROUP BY week
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+SELECT SUM(Weekly_Sales) AS sum_sales, IsHoliday
+FROM sales_data
+group by IsHoliday;
+
+SELECT 
+    Weekly_Sales, 
+    Unemployment, 
+    Temperature, 
+    Fuel_Price, 
+    CPI
+FROM sales_data;
