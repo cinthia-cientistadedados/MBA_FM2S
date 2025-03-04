@@ -27,11 +27,14 @@ SET
     Income = NULLIF(@Income, 'NA'),
     Spending_score = NULLIF(@Spending_score, 'NA');
     
-UPDATE shopping_data
+-- Visão da tabela
+SELECT * FROM shopping.shopping_data limited 10;
+    
+UPDATE shopping.shopping_data
 SET Income = Income * 1.10
 WHERE Spending_Score > 70;
 
-DELETE FROM shopping_data
+DELETE FROM shopping.shopping_data
 WHERE Spending_Score < 40;
 
 select * from shopping.shopping_data where Spending_score < 40
