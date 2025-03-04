@@ -28,7 +28,7 @@ SET
     Spending_score = NULLIF(@Spending_score, 'NA');
     
 -- Visão da tabela
-SELECT * FROM shopping.shopping_data limited 10;
+SELECT * FROM shopping.shopping_data limit 10;
     
 UPDATE shopping.shopping_data
 SET Income = Income * 1.10
