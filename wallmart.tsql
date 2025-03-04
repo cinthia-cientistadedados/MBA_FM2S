@@ -40,22 +40,25 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (id, Store, Dept, Date, Weekly_Sales, IsHoliday, Temperature, Fuel_Price, MarkDown1, MarkDown2, MarkDown3, MarkDown4, MarkDown5, CPI, Unemployment, Type, Size, Super_Bowl, Labor_Day, Thanksgiving, Christmas, week, month, year);
 
+-- Visão da tabela
+SELECT * FROM wallmart.sales_data limit 10;
+
 SELECT Store, SUM(Weekly_Sales) AS Total_Sales
-FROM sales_data
+FROM wallmart.sales_data
 GROUP BY Store;
 
 SELECT week, SUM(Weekly_Sales) AS Total_Sales
-FROM sales_data
+FROM wallmart.sales_data
 GROUP BY week;
 
 SELECT week, SUM(Weekly_Sales) AS Total_Sales
-FROM sales_data
+FROM wallmart.sales_data
 GROUP BY week
 ORDER BY Total_Sales DESC
 LIMIT 10;
 
 SELECT SUM(Weekly_Sales) AS sum_sales, IsHoliday
-FROM sales_data
+FROM wallmart.sales_data
 group by IsHoliday;
 
 SELECT 
